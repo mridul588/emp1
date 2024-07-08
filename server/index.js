@@ -30,9 +30,9 @@ app.use(express.json());
 app.use("/api/user",userRoutes);
 app.use("/api/admin",adminRoutes);
 
-
+const NODE_ENV = "production";
 const __currdir = path.resolve();
-if (process.env.NODE_ENV === "production") {
+if (NODE_ENV === "production") {
   app.use(express.static(path.join(__currdir, "/client/dist")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__currdir, "client", "dist", "index.html"));
