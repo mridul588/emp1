@@ -1,0 +1,9 @@
+.out{
+ display: flex;
+ justify-content: center;
+}
+
+.btum{
+  display: flex;
+  justify-content: space-between;
+}
