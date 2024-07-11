@@ -43,12 +43,16 @@ const LeavePage = () => {
         };
 
         try {
-            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/leave', leaveDetails, { headers });
+            const response = await axios.post(`${base_URL}/api/user/leave`, leaveDetails, { headers });
             alert('Leave request created successfully!');
             navigate('/leave');
         } catch (error) {
-            console.error(error);
-            alert('Leave request creation failed. Please try again.');
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data.message);
+            } else {
+                console.error(error);
+                alert('Leave request creation failed. Please try again.');
+            }
         }
     };
 
