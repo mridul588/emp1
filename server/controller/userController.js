@@ -55,7 +55,7 @@ const setLeave = asyncHandler(async (req, res) => {
         });
 
         if (leaveCount >= 2) {
-            return res.status(400).json({ message: "Please mail to lead/admin." });
+            return res.status(400).json({ message: "You have taken more than 2 leaves. Please mail to lead/admin." });
         }
 
         const leaveData = {
@@ -76,6 +76,7 @@ const setLeave = asyncHandler(async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
 
 
 const getUserLeaves = asyncHandler(async (req, res) => {
