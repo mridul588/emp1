@@ -2,10 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import './UserDashboard.css';
+import config from '../../utils/config';
 
 const UserDashboard = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const navigate = useNavigate();
+
+    const base_URL = config.backendUrl;
 
     const handleTaskNavigation = () => {
         navigate('/task');

@@ -3,9 +3,12 @@ import { Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@m
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './TaskPage.css'
+import config from '../../utils/config';
 
 const TaskPage = () => {
     const navigate = useNavigate();
+
+    const base_URL  = config.backendUrl;
 
     const [taskDetails, setTaskDetails] = useState({
         name: "",
@@ -40,7 +43,7 @@ const TaskPage = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/user/setTask', taskDetails, { headers });
+            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/setTask', taskDetails, { headers });
             alert('Task created successfully!');
             navigate('/task');
         } catch (error) {

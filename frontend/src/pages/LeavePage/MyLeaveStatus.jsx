@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './MyLeaveStatus.css';
+import config from '../../utils/config';
 
 const MyLeaveStatus = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -13,12 +14,21 @@ const MyLeaveStatus = () => {
         'Authorization': `Bearer ${user.token}`,
     };
 
+    const base_URL = config.backendUrl;
+
     useEffect(() => {
         const fetchLeaves = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/user/getleaves', { headers });
-                const sortedLeaves = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                setLeaves(sortedLeaves);
+                const response = await axios.get(`${base_URL}api/user/getleaves`, { headers });
+                const leavesData = response.data;
+
+                if (Array.isArray(leavesData)) {
+                    const sortedLeaves = leavesData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    setLeaves(sortedLeaves);
+                } else {
+                    console.error('Unexpected response format:', leavesData);
+                    setLeaves([]);
+                }
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching leaves:', error);
@@ -27,7 +37,7 @@ const MyLeaveStatus = () => {
         };
 
         fetchLeaves();
-    }, []);
+    }, [base_URL, headers]);
 
     if (loading) {
         return <CircularProgress />;
@@ -35,31 +45,31 @@ const MyLeaveStatus = () => {
 
     return (
         <div className='out'>
-        <TableContainer component={Paper}>
-        <h3>Your aplications</h3>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>From Date</TableCell>
-                        <TableCell>To Date</TableCell>
-                        <TableCell>Purpose</TableCell>
-                        <TableCell>Status</TableCell>
-                        <TableCell>Requested At</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {leaves.map((leave) => (
-                        <TableRow key={leave._id}>
-                            <TableCell>{new Date(leave.fromDate).toLocaleDateString()}</TableCell>
-                            <TableCell>{new Date(leave.toDate).toLocaleDateString()}</TableCell>
-                            <TableCell>{leave.purpose}</TableCell>
-                            <TableCell>{leave.status === 0 ? 'Rejected' : leave.status === 1 ? 'Pending' : 'Granted'}</TableCell>
-                            <TableCell>{new Date(leave.requestDate).toLocaleDateString()}</TableCell>
+            <TableContainer component={Paper}>
+                <h3>Your Applications</h3>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>From Date</TableCell>
+                            <TableCell>To Date</TableCell>
+                            <TableCell>Purpose</TableCell>
+                            <TableCell>Status</TableCell>
+                            <TableCell>Requested At</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {leaves.map((leave) => (
+                            <TableRow key={leave._id}>
+                                <TableCell>{new Date(leave.fromDate).toLocaleDateString()}</TableCell>
+                                <TableCell>{new Date(leave.toDate).toLocaleDateString()}</TableCell>
+                                <TableCell>{leave.purpose}</TableCell>
+                                <TableCell>{leave.status === 0 ? 'Rejected' : leave.status === 1 ? 'Pending' : 'Granted'}</TableCell>
+                                <TableCell>{new Date(leave.requestDate).toLocaleDateString()}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 };

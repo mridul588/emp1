@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import config from '../../../utils/config';
 import axios from 'axios';
 import WorkFormModal from './WorkModal';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 const EmployeeTable = () => {
+    const base_URL = config.backendUrl;
     const [employees, setEmployees] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState('');
@@ -13,15 +15,23 @@ const EmployeeTable = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/admin/getAllEmployees');
-                setEmployees(response.data);
+                const response = await axios.get(`${base_URL}api/admin/getAllEmployees`);
+                const employeesData = response.data;
+
+                if (Array.isArray(employeesData)) {
+                    setEmployees(employeesData);
+                } else {
+                    console.error('Unexpected response format:', employeesData);
+                    setEmployees([]);
+                }
             } catch (error) {
                 console.error('Error fetching employees:', error);
+                setEmployees([]); // Ensure employees is always an array
             }
         };
 
         fetchEmployees();
-    }, []);
+    }, [base_URL]);
 
     const handleAssignTaskClick = (userId) => {
         setSelectedUserId(userId);
@@ -69,7 +79,7 @@ const EmployeeTable = () => {
                 onClick={AddEmp}
                 style={{ width: '150px', margin: '15px' }}
             >
-                 Add employees
+                Add employees
             </Button>
             {showModal && (
                 <WorkFormModal

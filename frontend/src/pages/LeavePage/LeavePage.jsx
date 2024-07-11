@@ -3,6 +3,7 @@ import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LeavePage.css';
+import config from '../../utils/config';
 
 const LeavePage = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -16,6 +17,8 @@ const LeavePage = () => {
         status: 1,
         email: ""
     });
+
+    const base_URL = config.backendUrl;
 
     const { fromDate, toDate, purpose, email } = leaveDetails;
 
@@ -40,7 +43,7 @@ const LeavePage = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/user/leave', leaveDetails, { headers });
+            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/leave', leaveDetails, { headers });
             alert('Leave request created successfully!');
             navigate('/leave');
         } catch (error) {

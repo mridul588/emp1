@@ -21,7 +21,7 @@ const WorkModal = ({ userId, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/admin/work', formData);
+            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/admin/work', formData);
             console.log('Work assignment created:', response.data);
             onClose();
         } catch (error) {

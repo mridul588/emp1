@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './Work.css';
+import config from '../../utils/config';
 
 const Work = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const [works, setWorks] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const base_URL = config.backendUrl;
 
     const headers = {
         'Content-Type': 'application/json',
@@ -16,8 +19,15 @@ const Work = () => {
     useEffect(() => {
         const fetchWorks = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/user/getWork', { headers });
-                setWorks(response.data);
+                const response = await axios.get(`${base_URL}api/user/getWork`, { headers });
+                const worksData = response.data;
+
+                if (Array.isArray(worksData)) {
+                    setWorks(worksData);
+                } else {
+                    console.error('Unexpected response format:', worksData);
+                    setWorks([]);
+                }
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching works:', error);
@@ -26,7 +36,7 @@ const Work = () => {
         };
 
         fetchWorks();
-    }, []);
+    }, [base_URL, headers]);
 
     if (loading) {
         return <CircularProgress />;

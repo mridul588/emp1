@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress, Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './style.css';
+import config from '../../../utils/config';
 
 const AllTask = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const base_URL = config.backendUrl;
 
     const headers = {
         'Content-Type': 'application/json',
@@ -16,9 +19,19 @@ const AllTask = () => {
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/admin/seeTask', { headers });
-                const sortedTasks = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                setTasks(sortedTasks);
+                const response = await axios.get(`${base_URL}api/admin/seeTask`, { headers });
+                
+                let tasksData = response.data;
+                if (Array.isArray(tasksData)) {
+                    const sortedTasks = tasksData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    setTasks(sortedTasks);
+                } else if (tasksData.tasks && Array.isArray(tasksData.tasks)) {
+                    const sortedTasks = tasksData.tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    setTasks(sortedTasks);
+                } else {
+                    console.error('Unexpected response format:', tasksData);
+                }
+                
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching tasks:', error);

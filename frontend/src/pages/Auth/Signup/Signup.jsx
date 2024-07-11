@@ -3,9 +3,12 @@ import { Button, TextField, Select, MenuItem, FormControlLabel, Checkbox, InputL
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Signup.css';
+import config from '../../../utils/config';
 
 const Signup = () => {
     const navigate = useNavigate();
+
+    const base_URL = config.backendUrl;
 
     const [userCredentials, setUserCredentials] = useState({
         name: "",
@@ -46,15 +49,18 @@ const Signup = () => {
             return;
         }
 
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
         const headers = {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`,
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/admin/signup', userCredentials, { headers });
-            localStorage.setItem('loggedInUser', JSON.stringify(response.data));
+            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/admin/signup', userCredentials, { headers });
+           // localStorage.setItem('loggedInUser', JSON.stringify(response.data));
             alert('Signup successful!');
-            navigate('/login');
+            // navigate('/login');
         } catch (error) {
             console.error(error);
             alert('Signup failed. Please try again.');

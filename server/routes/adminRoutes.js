@@ -4,7 +4,7 @@ import { protect , adminCheck } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post('/signup',registerUser);
+router.post('/signup', protect , adminCheck ,registerUser);
 router.get('/seeTask' , protect , adminCheck ,getAllTasks);
 router.get('/pendingTask' , getAllPendingTasks);
 router.get('/getAllEmployees',getAllEmployees);
