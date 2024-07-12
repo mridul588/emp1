@@ -15,7 +15,7 @@ const LandingPage = () => {
 
     return (
         <>
-        <div className='out'>
+        <div className='out-land'>
             <AppBar position="static" style={{ background: 'none', width:'1360px'}}>
                 <Toolbar style={{ justifyContent: 'space-between' }}>
                     <div>

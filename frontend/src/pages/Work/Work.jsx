@@ -43,7 +43,7 @@ const Work = () => {
     }
 
     return (
-        <div className='out'>
+        <div className='out-work'>
             <TableContainer component={Paper}>
                 <h3>Your Assigned Work</h3>
                 <Table>

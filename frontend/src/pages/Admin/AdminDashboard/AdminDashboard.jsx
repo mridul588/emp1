@@ -21,7 +21,7 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className='out' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
+        <div className='out-admin' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
         <h3>Hello {user.name}</h3>
             <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>Admin Dashboard</h1>
             <Button

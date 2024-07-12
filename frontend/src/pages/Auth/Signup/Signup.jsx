@@ -69,7 +69,7 @@ const Signup = () => {
 
     return (
         <>
-            <div className='out' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+            <div className='out-signup' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', width: '400px'}}>
                     <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>Sign Up</h1>
                     <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>

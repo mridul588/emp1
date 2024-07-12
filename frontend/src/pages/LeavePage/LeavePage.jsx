@@ -61,7 +61,7 @@ const LeavePage = () => {
     };
 
     return (
-        <div className='out' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
+        <div className='out-leave' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
             <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>Request Leave</h1>
             <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleSubmit}>
                 <div className="form-group" style={{ marginBottom: '20px' }}>

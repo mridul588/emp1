@@ -58,7 +58,7 @@ const TaskPage = () => {
 
     return (
         <>
-            <div className='out' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div className='out-task' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div>
                     <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: '32px', textAlign: 'center' }}>Create Task</h1>
                     <form style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }} onSubmit={handleSubmit}>
