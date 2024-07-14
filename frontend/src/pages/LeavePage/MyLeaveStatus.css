@@ -1,5 +1,33 @@
-.out{
-  margin-left: 500px;
+.out-leavestatus{
+  position: relative;
+    margin: 0px;
+    width: 90vw;
+    left: 50%;
+    height: 90vh;
+    transform:translate(-50%,0px) ;
 }
-  
+.MuiTableContainer-root {
+  overflow-x: auto;
+}
+.Theadleave th{
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background-color: #365ed6;
+}
+
+.trowleave {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background-color: white;
+}
+
+.trowleave:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.trowleave:hover {
+  background-color: #e9e9e9;
+}
+
   
