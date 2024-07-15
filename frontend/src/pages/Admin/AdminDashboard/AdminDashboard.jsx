@@ -44,7 +44,7 @@ const AdminDashboard = () => {
                 onClick={handleEmployeeNavigation}
                 style={{ width: '150px', margin: '15px' }}
             >
-                 Employess
+                 Employees
             </Button>
         </div>
     );
