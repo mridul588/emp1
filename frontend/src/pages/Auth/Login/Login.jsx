@@ -3,6 +3,7 @@ import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
+import Navbar from '../../../components/Navbar/Navbar';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -51,6 +52,11 @@ const Login = () => {
     };
 
     return (
+        <div>
+        <div style={{"width": '1350px'}}>
+        <Navbar />
+        </div>
+       
         <div className="login-container">
             <div className="login-form">
                 <h1 className="login-title">Login</h1>
@@ -86,6 +92,7 @@ const Login = () => {
                     <Button variant="contained" type="submit" className="login-button">Login</Button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

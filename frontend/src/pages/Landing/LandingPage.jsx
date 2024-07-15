@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from './compo/variant.js';
 import logo from "../../assets/logo.png";
 import './LandingPage.css'
+import Navbar from '../../components/Navbar/Navbar.jsx';
 const LandingPage = () => {
     const navigate = useNavigate();
 
@@ -15,26 +16,9 @@ const LandingPage = () => {
 
     return (
         <>
+        <Navbar />
         <div className='out-land'>
-            <AppBar position="static" style={{ background: 'none', width:'1360px'}}>
-                <Toolbar style={{ justifyContent: 'space-between' }}>
-                    <div>
-                    <img src={logo} style={{ width: '100px', height: 'auto' }} alt="Logo" />
-                        
-                    </div>
-                    <Typography variant="h6">
-                    <Button 
-                     variant="contained"
-                                color="primary"
-                                size="large"
-                                style={{ marginTop: '20px' }}
-                                onClick={handleLogin}
-                    >Login</Button>
-                    </Typography>
-                    
-                </Toolbar>
-                
-            </AppBar>
+            
             <Container maxWidth="lg" style={{ marginTop: '50px', minHeight: 'calc(100vh - 64px)' }}>
             
             <Grid container spacing={4} alignItems="center" style={{ minHeight: '100vh' }}>
