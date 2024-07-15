@@ -31,7 +31,7 @@ export default function Navbar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="fixed" sx={{ top: 0, left: 0, right: 0, backgroundColor: '#f5f5f5', color: 'black' }}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -47,10 +47,10 @@ export default function Navbar() {
                     </Typography>
                     {exist ? (
                         <Button color="inherit" onClick={handleLogout}>
-                            Logout
+                            Log out
                         </Button>
                     ) : (
-                        <Button color="inherit" onClick={handleLogin}>
+                        <Button sx={{ color: 'blue' }} onClick={handleLogin}>
                             Login
                         </Button>
                     )}

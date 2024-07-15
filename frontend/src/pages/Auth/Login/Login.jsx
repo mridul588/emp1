@@ -53,10 +53,6 @@ const Login = () => {
 
     return (
         <div>
-        <div style={{"width": '1350px'}}>
-        <Navbar />
-        </div>
-       
         <div className="login-container">
             <div className="login-form">
                 <h1 className="login-title">Login</h1>
