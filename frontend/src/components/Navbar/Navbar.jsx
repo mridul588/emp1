@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo1 from '../../assets/logo1.png';
 
 export default function Navbar() {
     const [exist, setExist] = useState(false);
@@ -29,6 +30,10 @@ export default function Navbar() {
         navigate('/');
     };
 
+    const handleLogoClick = () => {
+        navigate('/');
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed" sx={{ top: 0, left: 0, right: 0, backgroundColor: '#f5f5f5', color: 'black' }}>
@@ -39,15 +44,17 @@ export default function Navbar() {
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
+                        onClick={handleLogoClick}
                     >
-                        Prism
+                        <img src={logo1} alt="logo" style={{ height: '40px', padding: '6px'}} />
+                       
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        {/* You can add some text or logo here */}
+                    Pyramid AI
                     </Typography>
                     {exist ? (
                         <Button color="inherit" onClick={handleLogout}>
-                            Log out
+                            Logout
                         </Button>
                     ) : (
                         <Button sx={{ color: 'blue' }} onClick={handleLogin}>

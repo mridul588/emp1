@@ -90,7 +90,7 @@ const Login = () => {
                         />
                     </div>
                       
-                   <Button onClick={handleReset}>Reset password</Button>  
+                    
                     <Button variant="contained" type="submit" className="login-button">Login</Button>
                 </form>
             </div>
