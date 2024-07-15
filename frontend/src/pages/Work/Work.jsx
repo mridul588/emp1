@@ -46,22 +46,22 @@ const Work = () => {
         <div className='out-work'>
             <TableContainer component={Paper}>
                 <h3>Your Assigned Work</h3>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Description</TableCell>
-                            <TableCell>Deadline</TableCell>
-                            <TableCell>Status</TableCell>
-                            <TableCell>Assigned Date</TableCell>
+                <Table className='table'>
+                    <TableHead className='Thead'>
+                        <TableRow className='trow'>
+                            <TableCell className='tablecell1'>Description</TableCell>
+                            <TableCell className='tablecell'>Deadline</TableCell>
+                            <TableCell className='tablecell'>Status</TableCell>
+                            <TableCell className='tablecell'>Assigned Date</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {works.map((work) => (
-                            <TableRow key={work._id}>
-                                <TableCell>{work.description}</TableCell>
-                                <TableCell>{new Date(work.deadline).toLocaleDateString()}</TableCell>
-                                <TableCell>{work.status === 0 ? 'Incomplete' : work.status === 1 ? 'In Progress' : 'Completed'}</TableCell>
-                                <TableCell>{new Date(work.assignedDate).toLocaleDateString()}</TableCell>
+                            <TableRow key={work._id} className='trow'>
+                                <TableCell className='tablecell1'>{work.description}</TableCell>
+                                <TableCell className='tablecell'>{new Date(work.deadline).toLocaleDateString()}</TableCell>
+                                <TableCell className='tablecell'>{work.status === 0 ? 'Incomplete' : work.status === 1 ? 'In Progress' : 'Completed'}</TableCell>
+                                <TableCell className='tablecell'>{new Date(work.assignedDate).toLocaleDateString()}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

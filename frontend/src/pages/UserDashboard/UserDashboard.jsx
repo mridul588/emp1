@@ -19,20 +19,20 @@ const UserDashboard = () => {
     };
 
     return (
-        <div className='out-user' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
-        <h3>Hello {user.name}</h3>
-            <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>User Dashboard</h1>
+        <div className='out-user' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <h2>Hello {user.name}</h2>
+            <h1 style={{ paddingBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>User Dashboard</h1>
             <Button
                 variant="contained"
                 onClick={handleTaskNavigation}
-                style={{ marginBottom: '20px', width: '150px' }}
+                style={{height:'40px', marginBottom: '20px', width: '150px' }}
             >
                 Go to Task
             </Button>
             <Button
                 variant="contained"
                 onClick={handleLeaveNavigation}
-                style={{ width: '150px' }}
+                style={{height:'40px', width: '150px' }}
             >
                 Go to Leave
             </Button>
