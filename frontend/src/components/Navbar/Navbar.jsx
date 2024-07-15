@@ -50,7 +50,7 @@ export default function Navbar() {
                        
                     </IconButton>
                     <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                    Pyramid AI
+                    Pyramid AI Hub
                     </Typography>
                     {exist ? (
                         <Button color="inherit" onClick={handleLogout}>
