@@ -38,7 +38,7 @@ const Login = () => {
             const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/login', credentials, { headers });
             const userData = response.data;
             localStorage.setItem('loggedInUser', JSON.stringify(userData));
-            alert('Login successful!');
+            // alert('Login successful!');
 
             if (userData.isAdmin) {
                 navigate('/admin');

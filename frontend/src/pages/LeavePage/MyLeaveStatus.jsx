@@ -44,12 +44,12 @@ const MyLeaveStatus = () => {
     }
 
     return (
-        <div className='out'>
+        <div className='out-leavestatus'>
             <TableContainer component={Paper}>
                 <h3>Your Applications</h3>
-                <Table>
-                    <TableHead>
-                        <TableRow>
+                <Table className='tableleave'>
+                    <TableHead className='Theadleave'>
+                        <TableRow className='trowleave'>
                             <TableCell>From Date</TableCell>
                             <TableCell>To Date</TableCell>
                             <TableCell>Purpose</TableCell>
@@ -59,7 +59,7 @@ const MyLeaveStatus = () => {
                     </TableHead>
                     <TableBody>
                         {leaves.map((leave) => (
-                            <TableRow key={leave._id}>
+                            <TableRow key={leave._id} className='trowleave'>
                                 <TableCell>{new Date(leave.fromDate).toLocaleDateString()}</TableCell>
                                 <TableCell>{new Date(leave.toDate).toLocaleDateString()}</TableCell>
                                 <TableCell>{leave.purpose}</TableCell>
