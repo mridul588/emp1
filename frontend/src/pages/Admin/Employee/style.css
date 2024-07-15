@@ -32,3 +32,45 @@
     text-decoration: none;
     cursor: pointer;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+    background-color: #3b66e9;
+    color: #ffffff;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color:#f3f3f3 ;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+button {
+    border:5px solid #3b66e9;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #3b66e9;
+}
+
