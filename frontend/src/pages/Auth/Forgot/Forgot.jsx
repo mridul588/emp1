@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Login.css';
 
 
-const Login = () => {
+
+const Forgot = () => {
     const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
         email: "",
-        password: "",
     });
 
-    const { email, password } = credentials;
+    const { email } = credentials;
 
     const handleInputChange = (prop) => (event) => {
         setCredentials({
@@ -25,7 +24,7 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!email || !password) {
+        if (!email) {
             alert('Please fill in all fields.');
             return;
         }
@@ -35,31 +34,27 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/login', credentials, { headers });
+            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/forgot', credentials, { headers });
             const userData = response.data;
-            localStorage.setItem('loggedInUser', JSON.stringify(userData));
-            // alert('Login successful!');
+            //localStorage.setItem('loggedInUser', JSON.stringify(userData));
+             alert('successful!');
 
-            if (userData.isAdmin) {
-                navigate('/admin');
-            } else {
-                navigate('/user');
-            }
+            // if (userData.isAdmin) {
+            //     navigate('/admin');
+            // } else {
+            //     navigate('/user');
+            // }
         } catch (error) {
             console.error(error);
             alert('Login failed. Please try again.');
         }
     };
 
-    const handleReset = ()=>{
-        navigate('/forgot');
-    }
-
     return (
         <div>
         <div className="login-container">
             <div className="login-form">
-                <h1 className="login-title">Login</h1>
+                <h1 className="login-title">Reset</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="email" className="form-label">Email</label>
@@ -74,24 +69,9 @@ const Login = () => {
                             placeholder="Enter Email"
                             fullWidth
                         />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <TextField
-                            required
-                            variant="outlined"
-                            type="password"
-                            value={password}
-                            onChange={handleInputChange("password")}
-                            name="password"
-                            id="password"
-                            placeholder="Enter Password"
-                            fullWidth
-                        />
-                    </div>
-                      
-                   <Button onClick={handleReset}>Reset password</Button>  
-                    <Button variant="contained" type="submit" className="login-button">Login</Button>
+                    </div>    
+                    
+                    <Button variant="contained" type="submit" className="login-button">Submit</Button>
                 </form>
             </div>
         </div>
@@ -99,4 +79,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Forgot;

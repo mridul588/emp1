@@ -7,7 +7,6 @@ import config from '../../../utils/config';
 
 const Signup = () => {
     const navigate = useNavigate();
-
     const base_URL = config.backendUrl;
 
     const [userCredentials, setUserCredentials] = useState({
@@ -36,6 +35,15 @@ const Signup = () => {
         });
     };
 
+    const generateRandomPassword = () => {
+        const randomPassword = Math.random().toString(36).slice(-8);
+        setUserCredentials({
+            ...userCredentials,
+            password: randomPassword,
+            confirmPassword: randomPassword,
+        });
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -57,10 +65,8 @@ const Signup = () => {
         };
 
         try {
-            const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/admin/signup', userCredentials, { headers });
-           // localStorage.setItem('loggedInUser', JSON.stringify(response.data));
+            const response = await axios.post(`${base_URL}/api/admin/signup`, userCredentials, { headers });
             alert('Signup successful!');
-            // navigate('/login');
         } catch (error) {
             console.error(error);
             alert('Signup failed. Please try again.');
@@ -70,7 +76,7 @@ const Signup = () => {
     return (
         <>
             <div className='out-signup' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '400px'}}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '400px' }}>
                     <h1 style={{ marginBottom: '30px', fontSize: '26px', fontWeight: 'bold', textAlign: 'center' }}>Sign Up</h1>
                     <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
@@ -109,7 +115,7 @@ const Signup = () => {
                             <TextField
                                 required
                                 variant="outlined"
-                                type="password"
+                                type="text"
                                 value={password}
                                 onChange={handleInputChange("password")}
                                 name="password"
@@ -124,7 +130,7 @@ const Signup = () => {
                             <TextField
                                 required
                                 variant="outlined"
-                                type="password"
+                                type="text"
                                 value={confirmPassword}
                                 onChange={handleInputChange("confirmPassword")}
                                 name="confirmPassword"
@@ -181,6 +187,9 @@ const Signup = () => {
                                 </Select>
                             </FormControl>
                         </div>
+                        <Button variant="outlined" onClick={generateRandomPassword} style={{ marginBottom: '10px' }}>
+                            Generate Random Password
+                        </Button>
                         <Button variant="contained" type="submit" name='submit_button' id="signup_button" style={{ marginTop: '12px' }}>Sign Up</Button>
                     </form>
                 </div>

@@ -13,6 +13,7 @@ import LandingPage from './pages/Landing/LandingPage.jsx';
 import EmployeeTable from './pages/Admin/Employee/EmployeeTable.jsx';
 import Work from './pages/Work/Work.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
+// import Forgot from './pages/Auth/Forgot/Forgot.jsx';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/status" element={<MyLeaveStatus />} />
             <Route path="/emp" element={<EmployeeTable />} />
             <Route path="/work" element={<Work />} />
+            {/* <Route path="/forgot" element={<Forgot />} /> */}
           </Routes>
         </div>
       </div>
