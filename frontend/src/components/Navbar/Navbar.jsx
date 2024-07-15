@@ -49,7 +49,7 @@ export default function Navbar() {
                         <img src={logo1} alt="logo" style={{ height: '40px', padding: '6px'}} />
                        
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
                     Pyramid AI
                     </Typography>
                     {exist ? (
