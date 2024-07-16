@@ -1,9 +1,70 @@
-.out-task{
- display: flex;
- justify-content: center;
+/* TaskPage.css */
+
+#task-form {
+  width: 400px;
+  max-width: 100%;
+  margin: 50px auto;
+  background-color: lightblue;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
 }
 
-.btum{
+#task-form h1 {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+#task-form form {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#task-form form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: gray;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+}
+
+#task-form form .MuiTextField-root,
+#task-form form .MuiFormControl-root {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#task-form form .task-button {
+  width: 100%;
+  padding: 12px;
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+#task-form form .task-button:hover {
+  background-color: deepskyblue;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#task-form form .button-group {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }

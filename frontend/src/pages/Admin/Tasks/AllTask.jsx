@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './style.css';
 import config from '../../../utils/config';
+import BackButton from '../../../components/Back/BackButton';
 
 const AllTask = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -47,6 +48,9 @@ const AllTask = () => {
     }
 
     return (
+        <div>
+        <div className='bk-t'> <BackButton /></div>
+       
         <TableContainer component={Paper}>
             <Table>
                 <TableHead>
@@ -79,6 +83,8 @@ const AllTask = () => {
                 </TableBody>
             </Table>
         </TableContainer>
+        
+        </div>
     );
 };
 

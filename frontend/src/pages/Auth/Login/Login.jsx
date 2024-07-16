@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
-
 
 const Login = () => {
     const navigate = useNavigate();
@@ -38,7 +37,6 @@ const Login = () => {
             const response = await axios.post('https://emp1api-mridul588s-projects.vercel.app/api/user/login', credentials, { headers });
             const userData = response.data;
             localStorage.setItem('loggedInUser', JSON.stringify(userData));
-            // alert('Login successful!');
 
             if (userData.isAdmin) {
                 navigate('/admin');
@@ -51,50 +49,36 @@ const Login = () => {
         }
     };
 
-    const handleReset = ()=>{
-        navigate('/forgot');
-    }
-
     return (
-        <div>
-        <div className="login-container">
-            <div className="login-form">
-                <h1 className="login-title">Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="email" className="form-label">Email</label>
-                        <TextField
-                            required
-                            variant="outlined"
-                            type="email"
-                            value={email}
-                            onChange={handleInputChange("email")}
-                            name="email"
-                            id="email"
-                            placeholder="Enter Email"
-                            fullWidth
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <TextField
-                            required
-                            variant="outlined"
-                            type="password"
-                            value={password}
-                            onChange={handleInputChange("password")}
-                            name="password"
-                            id="password"
-                            placeholder="Enter Password"
-                            fullWidth
-                        />
-                    </div>
-                      
-                    
-                    <Button variant="contained" type="submit" className="login-button">Login</Button>
-                </form>
-            </div>
-        </div>
+        <div id="login-form">
+            <h1>Login</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="email">Email:</label>
+                <TextField
+                    required
+                    variant="outlined"
+                    type="email"
+                    value={email}
+                    onChange={handleInputChange("email")}
+                    name="email"
+                    id="email"
+                    placeholder="Enter Email"
+                    fullWidth
+                />
+                <label htmlFor="password">Password:</label>
+                <TextField
+                    required
+                    variant="outlined"
+                    type="password"
+                    value={password}
+                    onChange={handleInputChange("password")}
+                    name="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    fullWidth
+                />
+                <Button variant="contained" type="submit" className="login-button">Submit</Button>
+            </form>
         </div>
     );
 };

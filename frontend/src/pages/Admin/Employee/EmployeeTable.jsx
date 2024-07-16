@@ -4,6 +4,7 @@ import axios from 'axios';
 import WorkFormModal from './WorkModal';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import BackButton from '../../../components/Back/BackButton';
 
 const EmployeeTable = () => {
     const base_URL = config.backendUrl;
@@ -73,6 +74,8 @@ const EmployeeTable = () => {
                     ))}
                 </tbody>
             </table>
+
+            <BackButton />
 
             <Button
                 variant="contained"
