@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Signup.css';
 import config from '../../../utils/config';
+import BackButton from '../../../components/Back/BackButton';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -140,6 +141,7 @@ const Signup = () => {
                 </Button>
                 <Button variant="contained" type="submit" className="signup-button">Sign Up</Button>
             </form>
+            <BackButton />
         </div>
     );
 };

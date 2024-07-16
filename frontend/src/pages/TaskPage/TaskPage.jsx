@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './TaskPage.css';
 import config from '../../utils/config';
+import BackButton from '../../components/Back/BackButton';
 
 const TaskPage = () => {
     const navigate = useNavigate();
@@ -56,6 +57,7 @@ const TaskPage = () => {
     };
 
     return (
+        <div>
         <div id="task-form">
             <h1>Create Task</h1>
             <form onSubmit={handleSubmit}>
@@ -176,6 +178,8 @@ const TaskPage = () => {
                     <Button variant="contained" onClick={handleWorkClick} className="task-button">My Task</Button>
                 </div>
             </form>
+        </div>
+        <BackButton />
         </div>
     );
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './MyLeaveStatus.css';
 import config from '../../utils/config';
+import BackButton from '../../components/Back/BackButton';
 
 const MyLeaveStatus = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -44,6 +45,10 @@ const MyLeaveStatus = () => {
     }
 
     return (
+        <div>
+        <div className='yo'>
+        <BackButton /> 
+        </div>
         <div className='out-leavestatus'>
             <TableContainer component={Paper}>
                 <h3>Your Applications</h3>
@@ -70,6 +75,7 @@ const MyLeaveStatus = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+        </div>
         </div>
     );
 };

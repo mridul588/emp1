@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from '@mui/material';
 import './Work.css';
 import config from '../../utils/config';
+import BackButton from '../../components/Back/BackButton';
 
 const Work = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -43,6 +44,10 @@ const Work = () => {
     }
 
     return (
+        <div>
+        <div className='yo'>
+        <BackButton />
+        </div>
         <div className='out-work'>
             <TableContainer component={Paper}>
                 <h3>Your Assigned Work</h3>
@@ -67,6 +72,7 @@ const Work = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+        </div>
         </div>
     );
 };

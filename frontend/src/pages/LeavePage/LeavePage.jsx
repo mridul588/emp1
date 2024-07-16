@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LeavePage.css';
 import config from '../../utils/config';
+import BackButton from '../../components/Back/BackButton';
 
 const LeavePage = () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -127,6 +128,7 @@ const LeavePage = () => {
                     />
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
+                <BackButton />
                     <Button
                         variant="contained"
                         type="submit"
@@ -143,6 +145,7 @@ const LeavePage = () => {
                     >
                         Check Status
                     </Button>
+                  
                 </div>
             </form>
         </div>
